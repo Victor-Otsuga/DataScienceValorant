@@ -12,20 +12,20 @@ st.set_page_config(page_title="Análise de Dados - Valorant", layout="wide")
 st.title("Análise de Dados: Armas do Valorant")
 
 # Carregar os dados do arquivo CSV
-@st.cache_data  # Cache para evitar recarregar os dados repetidamente
+@st.cache_data  
 def load_data():
     try:
         df = pd.read_csv("./valorant-stats.csv")
         return df
     except Exception as e:
         st.error(f"Erro ao carregar o arquivo: {e}")
-        return pd.DataFrame()  # Retorna um DataFrame vazio em caso de erro
+        return pd.DataFrame() 
 
 df = load_data()
 
-# Verificar se os dados foram carregados corretamente
+
 if df.empty:
-    st.stop()  # Interrompe a execução se não houver dados
+    st.stop()  
 
 # Criar abas
 tab1, tab2, tab3 = st.tabs(["📊 Análise Inicial", "📈 Medidas e Correlação", "🎲 Distribuições Probabilísticas"])
@@ -41,11 +41,45 @@ with tab1:
     st.write("Amostra dos dados:")
     st.write(df.head())
 
-    # Identificação dos tipos de variáveis
-    st.subheader("Tipos de Variáveis")
+    # Classificação das variáveis
+    st.subheader("Classificação das Variáveis")
     st.write("""
-    - **Variáveis Categóricas**: Name, Weapon Type, Wall Penetration
-    - **Variáveis Numéricas**: Price, Fire Rate, Magazine Capacity, HDMG_0, BDMG_0, LDMG_0, HDMG_1, BDMG_1, LDMG_1, HDMG_2, BDMG_2, LDMG_2
+    Abaixo está a classificação de cada variável do conjunto de dados:
+    """)
+
+    # Dicionário com a classificação das variáveis
+    variable_types = {
+        "Name": "Qualitativa Nominal",
+        "Weapon Type": "Qualitativa Nominal",
+        "Price": "Quantitativa Discreta",
+        "Fire Rate": "Quantitativa Contínua",
+        "Wall Penetration": "Qualitativa Ordinal",  
+        "Magazine Capacity": "Quantitativa Discreta",
+        "HDMG_0": "Quantitativa Contínua",
+        "BDMG_0": "Quantitativa Contínua",
+        "LDMG_0": "Quantitativa Contínua",
+        "HDMG_1": "Quantitativa Contínua",
+        "BDMG_1": "Quantitativa Contínua",
+        "LDMG_1": "Quantitativa Contínua",
+        "HDMG_2": "Quantitativa Contínua",
+        "BDMG_2": "Quantitativa Contínua",
+        "LDMG_2": "Quantitativa Contínua"
+    }
+
+    # Exibir a classificação em uma tabela
+    classification_df = pd.DataFrame({
+        "Variável": list(variable_types.keys()),
+        "Tipo": list(variable_types.values())
+    })
+    st.write(classification_df)
+
+    # Explicação dos tipos de variáveis
+    st.subheader("Explicação dos Tipos de Variáveis")
+    st.write("""
+    - **Qualitativa Nominal**: Variáveis que representam categorias sem ordem específica (ex: nome da arma, tipo de arma).
+    - **Qualitativa Ordinal**: Variáveis categóricas que possuem uma ordem ou hierarquia específica (ex: nível de penetração em paredes: Baixo, Médio, Alto).
+    - **Quantitativa Discreta**: Variáveis numéricas que assumem valores inteiros (ex: preço, capacidade do carregador).
+    - **Quantitativa Contínua**: Variáveis numéricas que assumem valores decimais (ex: taxa de disparo, dano em diferentes distâncias).
     """)
 
     # Perguntas de análise
