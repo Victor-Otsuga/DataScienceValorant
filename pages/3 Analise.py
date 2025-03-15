@@ -97,7 +97,7 @@ with tab1:
     fig1 = px.box(df, x="Weapon Type", y="Price", title="Distribuição de Preços por Tipo de Arma")
     st.plotly_chart(fig1)
     st.write("""
-    - **Observação**: As armas do tipo Sniper e Heavy tendem a ser as mais caras, enquanto as Sidearms são as mais baratas.
+    - **Observação**:A partir dos dados apresentados no gráfico, podemos observar que as armas do tipo Sniper possuem uma ampla variação de preços, com um valor médio muito superior às demais categorias, alcançando um preço próximo a 3.000. Por outro lado, as armas Sidearm apresentam preços significativamente mais baixos, com a maioria das opções custando bem menos, perto de 0 a 1.000. Isso sugere uma grande diferença de preços entre as categorias de armas mostradas, com Sniper sendo a mais cara e Sidearm a mais acessível.
     """)
 
     # Análise 2: Arma com maior dano em curta distância
@@ -110,7 +110,7 @@ with tab1:
     fig2 = px.bar(df, x="Weapon Type", y="Fire Rate", title="Taxa de Disparo por Tipo de Arma", color="Weapon Type")
     st.plotly_chart(fig2)
     st.write("""
-    - **Observação**: As SMGs têm a maior taxa de disparo, enquanto as Snipers têm a menor.
+    - **Observação**:A partir dos dados apresentados no gráfico, podemos observar que as armas do tipo Rifle, SMG e Sidearm possuem as maiores taxas de disparo (Fire Rate), todas próximas a 30-35. Por outro lado, as armas Sniper e Shotgun possuem as menores taxas de disparo, sendo significativamente mais lentas. As armas Heavy apresentam um valor intermediário, com uma taxa de disparo menor que rifles e SMGs, mas superior às Snipers e Shotguns. Isso sugere que armas automáticas (como Rifles e SMGs) são mais rápidas em disparos, enquanto armas de alto dano único (como Snipers e Shotguns) possuem uma cadência muito mais lenta.
     """)
 
     # Análise 4: Relação entre preço e dano
@@ -119,7 +119,7 @@ with tab1:
     fig3 = px.scatter(df, x="Price", y="HDMG_0", color="Weapon Type", title="Relação entre Preço e Dano em Curta Distância")
     st.plotly_chart(fig3)
     st.write("""
-    - **Observação**: Em geral, armas mais caras tendem a causar mais dano, mas há exceções, como a Sheriff, que é relativamente barata e causa alto dano.
+    - **Observação**: O gráfico mostra a relação entre o preço das armas e o dano causado em curta distância (HDMG_0). Podemos observar que as armas Sniper e algumas Rifle apresentam os maiores valores de dano, chegando perto de 200-250, mas também possuem preços mais elevados. As Sidearms e SMGs tendem a ter danos mais baixos, geralmente abaixo de 150, mas possuem preços mais acessíveis. Já as Shotguns apresentam uma distribuição interessante, pois possuem dano relativamente alto para curto alcance, mas variam bastante em preço. Isso sugere que armas mais caras, especialmente Snipers e Rifles, oferecem maior dano em curta distância, enquanto armas mais baratas, como Sidearms, são mais acessíveis, mas menos eficazes em termos de dano.
     """)
 
     # Análise 5: Custo-benefício (Dano por Preço)
@@ -128,7 +128,7 @@ with tab1:
     fig4 = px.bar(df, x="Name", y="Damage per Price", title="Dano por Preço (Custo-Benefício)", color="Weapon Type")
     st.plotly_chart(fig4)
     st.write("""
-    - **Observação**: A **Shorty** oferece o melhor custo-benefício em termos de dano por preço, enquanto a **Operator** tem o pior.
+    - **Observação**: A **Shorty** oferece o melhor custo-benefício em termos de dano por preço, enquanto a **Operator** tem o pior, sidearms tendem a ter um melhor dano por preço.
     """)
 
 # Aba 2: Medidas e Correlação
