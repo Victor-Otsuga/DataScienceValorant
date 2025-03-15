@@ -32,6 +32,7 @@ tab1, tab2, tab3 = st.tabs(["📊 Análise Inicial", "📈 Medidas e Correlaçã
 
 # Aba 1: Análise Inicial
 with tab1:
+    st.header("Repo: https://github.com/Victor-Otsuga/DataScienceValorant.git")
     st.header("1. Apresentação dos Dados")
     st.write("""
     Este conjunto de dados contém informações sobre as armas disponíveis no jogo Valorant. 
